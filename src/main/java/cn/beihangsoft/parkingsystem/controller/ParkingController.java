@@ -3,29 +3,35 @@ package cn.beihangsoft.parkingsystem.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.beihangsoft.parkingsystem.model.Car;
+import cn.beihangsoft.parkingsystem.model.ParkingArea;
+
 
 public final class ParkingController {
-	private final int MAX_NUM = 100;
 	Map<String, Integer> parkingMap;
+	ParkingArea parkingArea;
+	
 
-	public ParkingController() {
+	public ParkingController(ParkingArea parkingArea) {
+		parkingArea=new ParkingArea();
 		parkingMap = new HashMap<String, Integer>();
 	}
 
-	public int park(String carNum) {
-		if (parkingMap.size() == MAX_NUM) {
+	public int park(Car car) {
+		if (parkingMap.size() == parkingArea.getTotalSlots()) {
 			return -1;
 		}
 		int parkNum = parkingMap.size() + 1;
-		parkingMap.put(carNum, parkNum);
+		parkingMap.put(car.getCarNum(), parkNum);
 		return parkNum;
 	}
 
 	public int getFreeNum() {
-		return MAX_NUM - parkingMap.size();
+		return parkingArea.getTotalSlots()- parkingMap.size();
 	}
 
-	public int fetch(String carNum) {
+	public int fetch(Car car) {
+		String carNum=car.getCarNum();
 		if (parkingMap.containsKey(carNum)) {
 			int parkNum = parkingMap.get(carNum);
 			parkingMap.remove(carNum);
