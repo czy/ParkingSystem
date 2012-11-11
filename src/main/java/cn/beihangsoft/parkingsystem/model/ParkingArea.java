@@ -1,13 +1,22 @@
 package cn.beihangsoft.parkingsystem.model;
 
 public class ParkingArea {
-	private int slotsNum;
+	private int freeSlots;
+	private int totalSlots;
 
 	public int getSlotsNum() {
-		return slotsNum;
+		return freeSlots;
 	}
 
 	public void setSlotsNum(int slotsNum) {
-		this.slotsNum = slotsNum;
+		this.freeSlots = slotsNum;
+	}
+
+	public int getTotalSlots() {
+		return totalSlots;
+	}
+
+	public void setTotalSlots(int totalSlots) {
+		this.totalSlots = totalSlots;
 	}
 }
