@@ -41,9 +41,9 @@ public class ParkingSystemTest {
 
 	@Test
 	public void testFetchSuccess() {
-		parkingSystem.park("111111");
+		int parkNumB=parkingSystem.park("111111");
 		int parkNum = parkingSystem.fetch("111111");
-		assertTrue(parkNum != -1);
+		assertEquals(parkNum,parkNumB);
 	}
 
 	@Test
@@ -51,5 +51,12 @@ public class ParkingSystemTest {
 		parkingSystem.park("111111");
 		int parkNum = parkingSystem.fetch("333333");
 		assertEquals(parkNum, -1);
+	}
+	@Test
+	public void testFetchFalse2() {
+		parkingSystem.park("111111");
+		parkingSystem.fetch("111111");
+		int parkNum = parkingSystem.fetch("111111");
+		assertTrue(parkNum==-1);
 	}
 }
