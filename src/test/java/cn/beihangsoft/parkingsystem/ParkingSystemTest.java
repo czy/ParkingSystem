@@ -13,7 +13,7 @@ public class ParkingSystemTest {
 
 	@Before
 	public void initParkingSystem() throws Exception {
-		ParkingArea parkingArea=new ParkingArea();
+		ParkingArea parkingArea=new ParkingArea(100);
 		parkingSystem = new ParkingController(parkingArea);
 	}
 

@@ -4,6 +4,10 @@ public class ParkingArea {
 	private int freeSlots;
 	private int totalSlots;
 
+	public ParkingArea(int totalSlots) {
+		this.totalSlots = totalSlots;
+	}
+
 	public int getSlotsNum() {
 		return freeSlots;
 	}

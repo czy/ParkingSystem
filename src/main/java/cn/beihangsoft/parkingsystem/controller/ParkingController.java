@@ -6,14 +6,12 @@ import java.util.Map;
 import cn.beihangsoft.parkingsystem.model.Car;
 import cn.beihangsoft.parkingsystem.model.ParkingArea;
 
-
 public final class ParkingController {
 	Map<String, Integer> parkingMap;
 	ParkingArea parkingArea;
-	
 
 	public ParkingController(ParkingArea parkingArea) {
-		parkingArea=new ParkingArea();
+		this.parkingArea = parkingArea;
 		parkingMap = new HashMap<String, Integer>();
 	}
 
@@ -27,11 +25,11 @@ public final class ParkingController {
 	}
 
 	public int getFreeNum() {
-		return parkingArea.getTotalSlots()- parkingMap.size();
+		return parkingArea.getTotalSlots() - parkingMap.size();
 	}
 
 	public int fetch(Car car) {
-		String carNum=car.getPlateNumber();
+		String carNum = car.getPlateNumber();
 		if (parkingMap.containsKey(carNum)) {
 			int parkNum = parkingMap.get(carNum);
 			parkingMap.remove(carNum);
