@@ -1,13 +1,13 @@
 package cn.beihangsoft.parkingsystem.model;
 
 public class Car {
-	private String carNum;
+	private String plateNumber;
 
-	public String getCarNum() {
-		return carNum;
+	public String getPlateNumber() {
+		return plateNumber;
 	}
 
-	public void setCarNum(String carNum) {
-		this.carNum = carNum;
+	public void setPlateNumber(String plateNumber) {
+		this.plateNumber = plateNumber;
 	}
 }

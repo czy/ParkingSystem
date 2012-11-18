@@ -20,7 +20,7 @@ public class ParkingSystemTest {
 	@Test
 	public void testParkSuccess() {
 		Car car=new Car();
-		car.setCarNum("111111");
+		car.setPlateNumber("111111");
 		int parkNum = parkingSystem.park(car);
 		assertTrue(parkNum != -1);
 
@@ -30,12 +30,12 @@ public class ParkingSystemTest {
 	public void testParkFalse() {
 		for (int i = 0; i < 100; i++) {
 			Car car=new Car();
-			car.setCarNum(111100 + i + "");
+			car.setPlateNumber(111100 + i + "");
 			parkingSystem.park(car);
 
 		}
 		Car car=new Car();
-		car.setCarNum("222222");
+		car.setPlateNumber("222222");
 		int parkNum = parkingSystem.park(car);
 		assertEquals(parkNum, -1);
 
@@ -44,7 +44,7 @@ public class ParkingSystemTest {
 	@Test
 	public void testGetFreeNum() {
 		Car car=new Car();
-		car.setCarNum("222222");
+		car.setPlateNumber("222222");
 		parkingSystem.park(car);
 		int freeNum = parkingSystem.getFreeNum();
 		assertEquals(freeNum, 99);
@@ -53,9 +53,9 @@ public class ParkingSystemTest {
 	@Test
 	public void testFetchSuccess() {
 		Car car=new Car();
-		car.setCarNum("222222");
+		car.setPlateNumber("222222");
 		Car car2=new Car();
-		car2.setCarNum("333333");
+		car2.setPlateNumber("333333");
 		int parkNumB = parkingSystem.park(car);
 		int parkNum = parkingSystem.fetch(car);
 		assertEquals(parkNum, parkNumB);
@@ -64,9 +64,9 @@ public class ParkingSystemTest {
 	@Test
 	public void testFetchFalse() {
 		Car car=new Car();
-		car.setCarNum("222222");
+		car.setPlateNumber("222222");
 		Car car2=new Car();
-		car2.setCarNum("333333");
+		car2.setPlateNumber("333333");
 		parkingSystem.park(car);
 		int parkNum = parkingSystem.fetch(car2);
 		assertEquals(parkNum, -1);
@@ -75,7 +75,7 @@ public class ParkingSystemTest {
 	@Test
 	public void testFetchFalse2() {
 		Car car=new Car();
-		car.setCarNum("222222");
+		car.setPlateNumber("222222");
 		parkingSystem.park(car);
 		parkingSystem.fetch(car);
 		int parkNum = parkingSystem.fetch(car);

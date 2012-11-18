@@ -22,7 +22,7 @@ public final class ParkingController {
 			return -1;
 		}
 		int parkNum = parkingMap.size() + 1;
-		parkingMap.put(car.getCarNum(), parkNum);
+		parkingMap.put(car.getPlateNumber(), parkNum);
 		return parkNum;
 	}
 
@@ -31,7 +31,7 @@ public final class ParkingController {
 	}
 
 	public int fetch(Car car) {
-		String carNum=car.getCarNum();
+		String carNum=car.getPlateNumber();
 		if (parkingMap.containsKey(carNum)) {
 			int parkNum = parkingMap.get(carNum);
 			parkingMap.remove(carNum);
