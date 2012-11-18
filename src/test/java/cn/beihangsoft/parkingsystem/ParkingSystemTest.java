@@ -13,8 +13,7 @@ public class ParkingSystemTest {
 
 	@Before
 	public void initParkingSystem() throws Exception {
-		ParkingArea parkingArea=new ParkingArea(100);
-		parkingSystem = new ParkingController(parkingArea);
+		parkingSystem = new ParkingController(100);
 	}
 
 	@Test
@@ -22,7 +21,7 @@ public class ParkingSystemTest {
 		Car car=new Car();
 		car.setPlateNumber("111111");
 		int parkNum = parkingSystem.park(car);
-		assertTrue(parkNum != -1);
+		assertTrue(parkNum != 0);
 
 	}
 
@@ -37,7 +36,7 @@ public class ParkingSystemTest {
 		Car car=new Car();
 		car.setPlateNumber("222222");
 		int parkNum = parkingSystem.park(car);
-		assertEquals(parkNum, -1);
+		assertEquals(parkNum, 0);
 
 	}
 
@@ -69,7 +68,7 @@ public class ParkingSystemTest {
 		car2.setPlateNumber("333333");
 		parkingSystem.park(car);
 		int parkNum = parkingSystem.fetch(car2);
-		assertEquals(parkNum, -1);
+		assertEquals(parkNum, 0);
 	}
 
 	@Test
@@ -79,6 +78,6 @@ public class ParkingSystemTest {
 		parkingSystem.park(car);
 		parkingSystem.fetch(car);
 		int parkNum = parkingSystem.fetch(car);
-		assertTrue(parkNum == -1);
+		assertTrue(parkNum == 0);
 	}
 }
