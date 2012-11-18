@@ -6,6 +6,7 @@ public class ParkingArea {
 
 	public ParkingArea(int totalSlots) {
 		this.totalSlots = totalSlots;
+		this.freeSlots = totalSlots;
 	}
 
 	public int getSlotsNum() {
