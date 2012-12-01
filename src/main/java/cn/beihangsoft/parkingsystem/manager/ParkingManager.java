@@ -1,19 +1,18 @@
-package cn.beihangsoft.parkingsystem.controller;
+package cn.beihangsoft.parkingsystem.manager;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 
 import cn.beihangsoft.parkingsystem.model.Car;
 import cn.beihangsoft.parkingsystem.model.ParkingArea;
 
-public final class ParkingController {
+public final class ParkingManager {
 	Map<String, Integer> parkingMap;
 	ParkingArea parkingArea;
 	HashMap<Integer,Boolean> map;
 
-	public ParkingController(int totalSlots) {
+	public ParkingManager(int totalSlots) {
 		this.parkingArea = new ParkingArea(totalSlots);
 		parkingMap = new HashMap<String, Integer>();
 		map=new HashMap<Integer,Boolean>();

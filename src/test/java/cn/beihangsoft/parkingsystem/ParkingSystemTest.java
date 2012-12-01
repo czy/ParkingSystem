@@ -3,17 +3,16 @@ package cn.beihangsoft.parkingsystem;
 import org.junit.Before;
 import org.junit.Test;
 
-import cn.beihangsoft.parkingsystem.controller.ParkingController;
+import cn.beihangsoft.parkingsystem.manager.ParkingManager;
 import cn.beihangsoft.parkingsystem.model.Car;
-import cn.beihangsoft.parkingsystem.model.ParkingArea;
 import static junit.framework.Assert.*;
 
 public class ParkingSystemTest {
-	ParkingController parkingSystem;
+	ParkingManager parkingSystem;
 
 	@Before
 	public void initParkingSystem() throws Exception {
-		parkingSystem = new ParkingController(100);
+		parkingSystem = new ParkingManager(100);
 	}
 
 	@Test
