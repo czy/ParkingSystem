@@ -3,6 +3,7 @@ package cn.beihangsoft.parkingsystem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import cn.beihangsoft.parkingsystem.manager.ParkingBoy;
@@ -14,7 +15,6 @@ import cn.beihangsoft.parkingsystem.strategy.ChooseParkingBoyByMaxEmptySpacesStr
 import cn.beihangsoft.parkingsystem.strategy.ChooseParkingPlaceByFirstEmptySpaceStrategy;
 import cn.beihangsoft.parkingsystem.strategy.ChooseParkingPlaceByMaxEmptySpacesStrategy;
 import cn.beihangsoft.parkingsystem.strategy.ChooseParkingPlaceByVacancyRateStrategy;
-import static junit.framework.Assert.*;
 
 public class ParkingSystemTest {
 	private List<Ticket> ticketList;
@@ -45,14 +45,14 @@ public class ParkingSystemTest {
 		Car car = new Car();
 		int emptySpaces = parkingManager.getEmptySpaces();
 		parkingManager.park(car);
-		assertEquals(emptySpaces - 1, parkingManager.getEmptySpaces());
+		Assert.assertEquals(emptySpaces - 1, parkingManager.getEmptySpaces());
 	}
 
 	@Test
 	public void testFetchSuccess() {
 		Car car = new Car();
 		Ticket ticket = (parkingManager.park(car));
-		assertSame(car, parkingManager.fetch(ticket));
+		Assert.assertSame(car, parkingManager.fetch(ticket));
 	}
 
 	@Test(expected = NoCarException.class)
@@ -81,7 +81,7 @@ public class ParkingSystemTest {
 			parkingManager.fetch(ticket);
 		}
 
-		assertEquals(parkingManager.getTotalSpaces(), parkingManager.getEmptySpaces());
+		Assert.assertEquals(parkingManager.getTotalSpaces(), parkingManager.getEmptySpaces());
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class ParkingSystemTest {
 			parkingManager.park(new Car());
 		}
 
-		assertEquals(stupidParkingBoy.getEmptySpaces(), parkingPlaceList.get(1).getEmptySpaces());
+		Assert.assertEquals(stupidParkingBoy.getEmptySpaces(), parkingPlaceList.get(1).getEmptySpaces());
 	}
 
 	@Test
@@ -103,7 +103,7 @@ public class ParkingSystemTest {
 			parkingManager.park(new Car());
 		}
 
-		assertEquals(parkingPlaceList.get(0).getEmptySpaces(), parkingPlaceList.get(0).getTotalSpaces());
+		Assert.assertEquals(parkingPlaceList.get(0).getEmptySpaces(), parkingPlaceList.get(0).getTotalSpaces());
 	}
 
 	@Test
@@ -114,6 +114,6 @@ public class ParkingSystemTest {
 			parkingManager.park(new Car());
 		}
 
-		assertEquals(parkingPlaceList.get(0).getVacancyRate(), parkingPlaceList.get(1).getVacancyRate());
+		Assert.assertEquals(parkingPlaceList.get(0).getVacancyRate(), parkingPlaceList.get(1).getVacancyRate(), 0);
 	}
 }
