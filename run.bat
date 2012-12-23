@@ -1,2 +1,1 @@
-@cd target\dist
-@java -jar parking-system-1.0.jar
+@java -jar target\dist\parking-system-1.0.jar

@@ -1,14 +1,17 @@
 package cn.beihangsoft.parkingsystem.model;
 
-public class Car {
+/**
+ * 停车凭证
+ */
+public class Ticket {
 	private static int UNIQUE_ID = 0;
 	private int id = 0;
 
-	public Car() {
+	public Ticket() {
 		id = ++UNIQUE_ID;
 	}
 
-	public Car(int id) {
+	public Ticket(int id) {
 		this.id = id;
 	}
 
@@ -22,8 +25,8 @@ public class Car {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Car) {
-			return id == ((Car)obj).getId();
+		if (obj instanceof Ticket) {
+			return id == ((Ticket)obj).getId();
 		}
 
 		return false;
@@ -31,6 +34,6 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "Car(" + id + ")";
+		return "Ticket(" + id + ")";
 	}
 }
