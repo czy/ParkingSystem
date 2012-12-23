@@ -8,7 +8,9 @@ import cn.beihangsoft.parkingsystem.manager.ParkingManager;
 import cn.beihangsoft.parkingsystem.model.Car;
 import cn.beihangsoft.parkingsystem.model.ParkingPlace;
 import cn.beihangsoft.parkingsystem.model.Ticket;
+import cn.beihangsoft.parkingsystem.strategy.ChooseParkingBoyByMaxEmptySpacesStrategy;
 import cn.beihangsoft.parkingsystem.strategy.ChooseParkingBoyByVacancyRateStrategy;
+import cn.beihangsoft.parkingsystem.strategy.ChooseParkingBoyStrategy;
 import cn.beihangsoft.parkingsystem.strategy.ChooseParkingPlaceByFirstEmptySpaceStrategy;
 import cn.beihangsoft.parkingsystem.strategy.ChooseParkingPlaceByMaxEmptySpacesStrategy;
 import cn.beihangsoft.parkingsystem.strategy.ChooseParkingPlaceByVacancyRateStrategy;
@@ -19,6 +21,13 @@ import cn.beihangsoft.parkingsystem.strategy.ChooseParkingPlaceByVacancyRateStra
 public class Simulator {
 	public static void main(String[] args) {
 		System.setProperty("debug", "true");
+
+		ChooseParkingBoyStrategy chooseParkingBoyStrategy;
+		if ("rate".equals(System.getProperty("strategy"))) {
+			chooseParkingBoyStrategy = new ChooseParkingBoyByVacancyRateStrategy();
+		} else {
+			chooseParkingBoyStrategy = new ChooseParkingBoyByMaxEmptySpacesStrategy();
+		}
 
 		int totalCars = 301;
 		List<Car> carList = new ArrayList<Car>();
@@ -35,8 +44,7 @@ public class Simulator {
 				new ParkingPlace(60));
 		List<ParkingBoy> parkingBoyList = Arrays.asList(stupidParkingBoy, smartParkingBoy, geniusParkingBoy);
 		ParkingManager parkingManager = new ParkingManager(parkingPlaceList,
-				new ChooseParkingPlaceByVacancyRateStrategy(), parkingBoyList,
-				new ChooseParkingBoyByVacancyRateStrategy());
+				new ChooseParkingPlaceByVacancyRateStrategy(), parkingBoyList, chooseParkingBoyStrategy);
 
 		for (int i = 0; i < totalCars; i++) {
 			carList.add(new Car());
