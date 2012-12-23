@@ -38,7 +38,7 @@ public class ParkingPlace {
 	}
 
 	public double getVacancyRate() {
-		return (double)(totalSpaces - placeCarMap.size()) / totalSpaces;
+		return (double)(getEmptySpaces()) / totalSpaces;
 	}
 
 	public Ticket park(Car car) {

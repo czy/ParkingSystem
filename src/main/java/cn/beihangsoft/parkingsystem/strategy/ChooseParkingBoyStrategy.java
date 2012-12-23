@@ -4,5 +4,5 @@ import java.util.List;
 import cn.beihangsoft.parkingsystem.manager.ParkingBoy;
 
 public interface ChooseParkingBoyStrategy {
-	public ParkingBoy getAvailableParkingBoy(List<ParkingBoy> parkingBoys);
+	public ParkingBoy getAvailableParkingBoy(List<ParkingBoy> parkingBoyList);
 }

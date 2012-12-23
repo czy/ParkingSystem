@@ -8,7 +8,7 @@ import cn.beihangsoft.parkingsystem.manager.ParkingManager;
 import cn.beihangsoft.parkingsystem.model.Car;
 import cn.beihangsoft.parkingsystem.model.ParkingPlace;
 import cn.beihangsoft.parkingsystem.model.Ticket;
-import cn.beihangsoft.parkingsystem.strategy.ChooseParkingBoyByMaxEmptySpacesStrategy;
+import cn.beihangsoft.parkingsystem.strategy.ChooseParkingBoyByVacancyRateStrategy;
 import cn.beihangsoft.parkingsystem.strategy.ChooseParkingPlaceByFirstEmptySpaceStrategy;
 import cn.beihangsoft.parkingsystem.strategy.ChooseParkingPlaceByMaxEmptySpacesStrategy;
 import cn.beihangsoft.parkingsystem.strategy.ChooseParkingPlaceByVacancyRateStrategy;
@@ -36,7 +36,7 @@ public class Simulator {
 		List<ParkingBoy> parkingBoyList = Arrays.asList(stupidParkingBoy, smartParkingBoy, geniusParkingBoy);
 		ParkingManager parkingManager = new ParkingManager(parkingPlaceList,
 				new ChooseParkingPlaceByVacancyRateStrategy(), parkingBoyList,
-				new ChooseParkingBoyByMaxEmptySpacesStrategy());
+				new ChooseParkingBoyByVacancyRateStrategy());
 
 		for (int i = 0; i < totalCars; i++) {
 			carList.add(new Car());
